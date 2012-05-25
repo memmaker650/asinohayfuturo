@@ -37,6 +37,19 @@ app.get('/', function(req, res) {
   res.render('index', { title: 'Express' })
 })
 
+app.get('/cause/create', function(req, res) {
+  res.render('create', { title: 'Create Cause'})
+})
+app.post('/cause/create', function(req, res) {
+  var text = req.body.text;
+  if(!text){
+      res.redirect('/cause/create')
+  }else{
+      res.redirect('/')
+  }
+})
+
+
 app.get('/cause/:causeid', function(req, res) {
   res.render('cause', { title: 'Express', causeid:req.params.causeid })
 })
